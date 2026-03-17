@@ -1,0 +1,167 @@
+.profile {
+  min-height: calc(100vh - 200px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 0;
+
+  .profile-content {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  .profile-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 50px;
+      color: white;
+    }
+
+    .profile-name {
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    .profile-email {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .profile-phone {
+      color: #28a745;
+      font-weight: 600;
+
+      i {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .profile-details {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      color: #333;
+      border-bottom: 3px solid #28a745;
+      padding-bottom: 15px;
+      margin-bottom: 30px !important;
+    }
+
+    .info-group {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      label {
+        font-weight: 600;
+        color: #555;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      p {
+        color: #333;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+
+      .btn {
+        flex: 1;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        i {
+          margin-right: 8px;
+        }
+
+        &.btn-danger {
+          background-color: #dc3545;
+          color: white;
+
+          &:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+          }
+        }
+
+        &.btn-primary {
+          background-color: #28a745;
+          color: white;
+
+          &:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .profile {
+    .profile-card {
+      margin-bottom: 25px;
+    }
+
+    .profile-details {
+      .action-buttons {
+        flex-direction: column;
+      }
+    }
+  }
+}
