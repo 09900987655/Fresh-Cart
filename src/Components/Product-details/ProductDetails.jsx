@@ -1,13 +1,15 @@
 import React from "react";
 import "./ProductDetails.scss";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useState, useContext } from "react";
 import { getSingleProduct, useProduct } from "./../../Hooks/useProduct";
 import Loading from "./../Loading/Loading";
 import { Helmet } from "react-helmet";
 import Slider from "react-slick";
 import { addToCart, useCartCrud } from "../../Hooks/useCart";
 import { addToWish, useCrudWish } from "../../Hooks/useWishList";
+import { UserContext } from "../../Hooks/UserContext";
+
 export default function ProductDetails() {
   var settings = {
     dots: true,
@@ -19,6 +21,7 @@ export default function ProductDetails() {
     autoplayspeed: 900,
   };
 
+  const { userToken } = useContext(UserContext);
   let { id } = useParams();
   let [heart, setHeart] = useState(false);
   let { data, error, isError, isLoading } = useProduct("productdetails", () =>
@@ -72,6 +75,25 @@ export default function ProductDetails() {
         <title>ProductDetails</title>
         <meta name="description" content="Helmet application" />
       </Helmet>
+
+      {!userToken && (
+        <div className="auth-alert alert alert-info my-3">
+          <div className="d-flex justify-content-between align-items-center">
+            <span>
+              <i className="fa-solid fa-info-circle"></i> Please log in to add items to your cart
+            </span>
+            <div className="auth-buttons">
+              <Link to="/" className="btn btn-sm btn-primary me-2">
+                <i className="fa-solid fa-sign-in-alt"></i> Login
+              </Link>
+              <Link to="/Register" className="btn btn-sm btn-success">
+                <i className="fa-solid fa-user-plus"></i> Sign Up
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="row  py-5">
         <div className="col-md-3">
           <Slider {...settings}>
