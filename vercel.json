@@ -4,22 +4,7 @@
   "installCommand": "npm install",
   "framework": "vite",
   "outputDirectory": "dist",
-  "env": {
-    "VITE_API_BASE_URL": "@vite_api_base_url"
-  },
   "regions": ["sfo1"],
-  "functions": {
-    "api/**/*.js": {
-      "memory": 1024,
-      "maxDuration": 60
-    }
-  },
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/Fresh-Cart/"
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
@@ -27,3 +12,4 @@
     }
   ]
 }
+
